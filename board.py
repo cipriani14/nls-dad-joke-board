@@ -43,7 +43,7 @@ class DadJokesBoard(BoardBase):
         # Load cached joke if available
         self._load_cache()
         
-        debug.info(f"Dad Jokes Board initialized (v{self.board_version})")
+        debug.info(f"Dad Jokes Board initialized (v{self.board_version}) - Name: {self.board_name}")
 
     def _load_cache(self):
         """Load cached joke from file."""
@@ -165,24 +165,38 @@ class DadJokesBoard(BoardBase):
         text_width = self._get_text_width(joke_text, font)
         needs_scroll = text_width > self.display_width
         
+        joke_y_start = 8 # Default Y position if no header and no layout
+
         if layout and 'header' in layout and header:
             # Draw header using layout
             self.matrix.draw_text_layout(layout['header'], header, fillColor='white')
-            joke_y_start = layout.get('joke', {}).get('position', [0, 12])[1]
-        else:
-            # Fallback header positioning
-            if header:
-                self.matrix.draw_text_centered(2, header, font, 'white')
-                joke_y_start = 12
+            
+            # Get joke Y-position from layout, with fallback
+            if 'joke' in layout and layout['joke'] and 'position' in layout['joke']:
+                try:
+                    joke_y_start = layout['joke']['position'][1]
+                except (TypeError, IndexError):
+                    joke_y_start = 12 # Fallback if position is malformed
             else:
-                joke_y_start = 8
+                joke_y_start = 12 # Fallback if no joke layout
+        
+        elif header: # Fallback header positioning (no layout)
+            self.matrix.draw_text_centered(2, header, font, 'white')
+            joke_y_start = 12
+        
+        elif layout and 'joke' in layout and layout['joke'] and 'position' in layout['joke']:
+             # No header, but layout has joke position
+             try:
+                joke_y_start = layout['joke']['position'][1]
+             except (TypeError, IndexError):
+                joke_y_start = 8 # Fallback if position is malformed
         
         if needs_scroll:
             # Scroll the joke text
             self._scroll_text(joke_text, joke_y_start, font)
         else:
             # Static display - center the text
-            if layout and 'joke' in layout:
+            if layout and 'joke' in layout and layout['joke']:
                 self.matrix.draw_text_layout(layout['joke'], joke_text, fillColor=self.text_color)
             else:
                 self.matrix.draw_text_centered(joke_y_start, joke_text, font, self.text_color)
