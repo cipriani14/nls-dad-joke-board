@@ -74,7 +74,7 @@ dad_jokes/
 git init
 git add .
 git commit -m "Initial commit - Dad Jokes plugin"
-git remote add origin https://github.com/YOUR_USERNAME/nhl-scoreboard-dad-jokes.git
+git remote add origin https://github.com/cipriani14/nhl-scoreboard-dad-jokes.git
 git push -u origin main
 ```
 
@@ -90,7 +90,7 @@ python3 test_dad_jokes.py
 ```bash
 # On your Pi
 cd /home/pi/nhl-led-scoreboard/src/boards/plugins/
-git clone https://github.com/YOUR_USERNAME/nhl-scoreboard-dad-jokes.git dad_jokes
+git clone https://github.com/cipriani14/nhl-scoreboard-dad-jokes.git dad_jokes
 cd dad_jokes
 cp config.sample.json config.json
 nano config.json  # Edit settings
