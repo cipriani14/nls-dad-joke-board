@@ -16,7 +16,8 @@ with open(_plugin_dir / "plugin.json") as f:
 __plugin_id__ = _metadata["name"]
 __version__ = _metadata["version"]
 __description__ = _metadata["description"]
-__board_name__ = _metadata["description"]
+# FIX: __board_name__ should be the "name" (ID), not the "description"
+__board_name__ = _metadata["name"]
 __author__ = _metadata.get("author", "")
 __requirements__ = _metadata.get("requirements", {}).get("python_dependencies", [])
 __min_app_version__ = _metadata.get("requirements", {}).get("app_version", "")
