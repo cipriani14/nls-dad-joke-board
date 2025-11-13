@@ -1,0 +1,18 @@
+{
+“_default”: {
+“position”: [0, 0],
+“align”: “left-top”
+},
+“dad_jokes”: {
+“header”: {
+“position”: [“50%”, 2],
+“align”: “center-top”,
+“font”: “small”
+},
+“joke”: {
+“position”: [“50%”, 12],
+“align”: “center-top”,
+“font”: “small”
+}
+}
+}
