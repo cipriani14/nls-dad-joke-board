@@ -1,16 +1,16 @@
 {
-“text_color”: “yellow”,
-“display_seconds”: 10,
-“scroll_speed”: 0.05,
-“refresh_interval_hours”: 1,
-“show_header”: true,
-“enabled”: true,
-
-“_comment”: “Configuration options:”,
-“_text_color”: “Color of the joke text (e.g., ‘yellow’, ‘white’, ‘cyan’)”,
-“_display_seconds”: “Seconds to display joke if it fits on screen without scrolling”,
-“_scroll_speed”: “Speed of text scrolling (lower = slower, 0.05 recommended)”,
-“_refresh_interval_hours”: “Hours between fetching new jokes (1 recommended)”,
-“_show_header”: “Show ‘DAD JOKE’ header (true/false)”,
-“_enabled”: “Enable/disable the board (true/false)”
+  "text_color": "yellow",
+  "display_seconds": 10,
+  "scroll_speed": 0.05,
+  "refresh_interval_hours": 1,
+  "show_header": true,
+  "enabled": true,
+  
+  "_comment": "Configuration options:",
+  "_text_color": "Color of the joke text (e.g., 'yellow', 'white', 'cyan')",
+  "_display_seconds": "Seconds to display joke if it fits on screen without scrolling",
+  "_scroll_speed": "Speed of text scrolling (lower = slower, 0.05 recommended)",
+  "_refresh_interval_hours": "Hours between fetching new jokes (1 recommended)",
+  "_show_header": "Show 'DAD JOKE' header (true/false)",
+  "_enabled": "Enable/disable the board (true/false)"
 }
