@@ -1,27 +1,27 @@
 {
-“name”: “dad_jokes”,
-“version”: “1.0.0”,
-“description”: “Display dad jokes from icanhazdadjoke.com API”,
-“author”: “Your Name”,
-“enabled”: true,
+  "name": "dad_jokes",
+  "version": "1.0.0",
+  "description": "Display dad jokes from icanhazdadjoke.com API",
+  "author": "Your Name",
+  "enabled": true,
 
-“boards”: [
-{
-“id”: “dad_jokes”,
-“class_name”: “DadJokesBoard”,
-“module”: “board”
-}
-],
+  "boards": [
+    {
+      "id": "dad_jokes",
+      "class_name": "DadJokesBoard",
+      "module": "board"
+    }
+  ],
 
-“requirements”: {
-“app_version”: “>=2025.9.0”,
-“python_dependencies”: [
-“requests>=2.28.0”
-]
-},
+  "requirements": {
+    "app_version": ">=2025.9.0",
+    "python_dependencies": [
+      "requests>=2.28.0"
+    ]
+  },
 
-“preserve_files”: [
-“config.json”,
-“jokes_cache.json”
-]
+  "preserve_files": [
+    "config.json",
+    "jokes_cache.json"
+  ]
 }
