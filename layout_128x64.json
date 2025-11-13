@@ -1,18 +1,18 @@
 {
-“_default”: {
-“position”: [0, 0],
-“align”: “left-top”
-},
-“dad_jokes”: {
-“header”: {
-“position”: [“50%”, 6],
-“align”: “center-top”,
-“font”: “medium”
-},
-“joke”: {
-“position”: [“50%”, 24],
-“align”: “center-top”,
-“font”: “medium”
-}
-}
+  "_default": {
+    "position": [0, 0],
+    "align": "left-top"
+  },
+  "dad_jokes": {
+    "header": {
+      "position": ["50%", 6],
+      "align": "center-top",
+      "font": "medium"
+    },
+    "joke": {
+      "position": ["50%", 24],
+      "align": "center-top",
+      "font": "medium"
+    }
+  }
 }
