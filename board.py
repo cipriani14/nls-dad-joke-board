@@ -43,7 +43,7 @@ class DadJokesBoard(BoardBase):
         # Load cached joke if available
         self._load_cache()
         
-        debug.info(f"Dad Jokes Board initialized (v{self.board_version}) - Name: {self.board_name}")
+        debug.info(f"Dad Jokes Board initialized (v{self.board_version})")
 
     def _load_cache(self):
         """Load cached joke from file."""
@@ -158,45 +158,41 @@ class DadJokesBoard(BoardBase):
             header = None
             joke_text = self.current_joke
         
-        # Get font
-        font = self.data.config.layout.font
+        # Get font - use small font for better readability
+        font = self.data.config.layout.font_small if hasattr(self.data.config.layout, 'font_small') else self.data.config.layout.font
         
         # Calculate if text needs scrolling
         text_width = self._get_text_width(joke_text, font)
         needs_scroll = text_width > self.display_width
         
-        joke_y_start = 8 # Default Y position if no header and no layout
-
-        if layout and 'header' in layout and header:
-            # Draw header using layout
-            self.matrix.draw_text_layout(layout['header'], header, fillColor='white')
-            
-            # Get joke Y-position from layout, with fallback
-            if 'joke' in layout and layout['joke'] and 'position' in layout['joke']:
-                try:
-                    joke_y_start = layout['joke']['position'][1]
-                except (TypeError, IndexError):
-                    joke_y_start = 12 # Fallback if position is malformed
+        # Determine Y position for joke text
+        if layout and 'joke' in layout:
+            joke_y_start = layout['joke']['position'][1]
+        else:
+            # Fallback positioning based on display height
+            if self.show_header:
+                if self.display_height >= 64:
+                    joke_y_start = 30  # More space for 128x64
+                else:
+                    joke_y_start = 14  # Compact for 64x32
             else:
-                joke_y_start = 12 # Fallback if no joke layout
+                joke_y_start = self.display_height // 2 - 4
         
-        elif header: # Fallback header positioning (no layout)
-            self.matrix.draw_text_centered(2, header, font, 'white')
-            joke_y_start = 12
-        
-        elif layout and 'joke' in layout and layout['joke'] and 'position' in layout['joke']:
-             # No header, but layout has joke position
-             try:
-                joke_y_start = layout['joke']['position'][1]
-             except (TypeError, IndexError):
-                joke_y_start = 8 # Fallback if position is malformed
+        # Draw header if enabled
+        if header:
+            if layout and 'header' in layout:
+                self.matrix.draw_text_layout(layout['header'], header, fillColor='white')
+            else:
+                # Fallback header
+                header_y = 2 if self.display_height < 64 else 4
+                self.matrix.draw_text_centered(header_y, header, font, 'white')
         
         if needs_scroll:
             # Scroll the joke text
             self._scroll_text(joke_text, joke_y_start, font)
         else:
             # Static display - center the text
-            if layout and 'joke' in layout and layout['joke']:
+            if layout and 'joke' in layout:
                 self.matrix.draw_text_layout(layout['joke'], joke_text, fillColor=self.text_color)
             else:
                 self.matrix.draw_text_centered(joke_y_start, joke_text, font, self.text_color)
