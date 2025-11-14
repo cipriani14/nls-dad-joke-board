@@ -4,6 +4,7 @@
   "scroll_speed": 0.05,
   "refresh_interval_hours": 1,
   "show_header": true,
+  "use_small_font": true,
   "enabled": true,
   
   "_comment": "Configuration options:",
@@ -12,5 +13,6 @@
   "_scroll_speed": "Speed of text scrolling (lower = slower, 0.05 recommended)",
   "_refresh_interval_hours": "Hours between fetching new jokes (1 recommended)",
   "_show_header": "Show 'DAD JOKE' header (true/false)",
+  "_use_small_font": "Use smaller font for better text fit (true recommended for 128x64)",
   "_enabled": "Enable/disable the board (true/false)"
 }
