@@ -5,12 +5,12 @@
   },
   "dad_jokes": {
     "header": {
-      "position": ["50%", 6],
+      "position": ["50%", 4],
       "align": "center-top",
-      "font": "medium"
+      "font": "small"
     },
     "joke": {
-      "position": ["50%", 24],
+      "position": ["50%", 30],
       "align": "center-top",
       "font": "medium"
     }
