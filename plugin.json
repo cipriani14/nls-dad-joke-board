@@ -1,8 +1,8 @@
 {
   "name": "dad_jokes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Display dad jokes from icanhazdadjoke.com API",
-  "author": "Your Name",
+  "author": "@MrCippy",
   "enabled": true,
 
   "boards": [
