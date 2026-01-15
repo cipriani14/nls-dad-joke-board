@@ -216,11 +216,15 @@ class DadJokesBoard(BoardBase):
         current_y = start_y
         
         for line in lines:
-            # Calculate text width for centering
-            text_width = len(line) * 6  # Approximate, adjust if needed
-            x = (self.display_width - text_width) // 2
+            # Use the matrix's built-in text centering if available
+            try:
+                self.matrix.draw_text_centered(current_y, line, font, color)
+            except:
+                # Fallback: manual centering with better calculation
+                text_width = len(line) * 5  # Adjusted from 6 to 5 for better centering
+                x = (self.display_width - text_width) // 2
+                self.matrix.draw_text((x, current_y), line, font, color)
             
-            self.matrix.draw_text((x, current_y), line, font, color)
             current_y += line_height
 
     def render(self):
